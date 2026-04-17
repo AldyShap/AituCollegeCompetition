@@ -1,18 +1,8 @@
 import requests
 import pandas as pd
 import json
-from pprint import pprint
 
-
-# isAsia=False
-# isAfrica=False
-# isNorth_America=False
-# isSouth_America=False
-# isAntarctica=False
-# isEurope=False
-# isOceania=False
-
-url = "https://restcountries.com" # REST API for countries data
+url = "https://restcountries.com"
 
 def show_contries(continent):
     data_contries = []
@@ -28,7 +18,6 @@ def show_contries(continent):
             exit()
 
         res_json = response.json()
-        # print(res_json)
         
         print("=="*50)
         print(f"The contries in continent: {continent}")
@@ -53,20 +42,19 @@ def show_contries(continent):
         return data_contries
 
     except Exception as e:
-        print(f"Қателік кетті: {e}")
+        print(f"Error: {e}")
         exit()
 
 continent = input("Enter the continent (Asia, Europs, Africa, Oceania): ")
 
 data = show_contries(continent)
+
 # Asia, Africa, North America, South America, Antarctica, Europe, and Australia (or Oceania)
 
 filename = continent.lower().replace(" ", "_").strip() + "_countries.json"
 
 with open(filename, "w") as f:
     json.dump(data, f, indent=4)
-
-
 
 print("=="*50)
 
@@ -102,7 +90,6 @@ try:
     print(f"The city: {country}")
     print(f"The capital: {capital}")
     print(f"The number of population: {population}")
-
 except Exception as e:
     print(f"Error: {e}")
 
